@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cocktail_app/Drink_Detail.dart';
 import 'package:cocktail_app/model/drinks_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -25,17 +26,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   fetchData() async {
-    // res = await Uri.http(api);
     final response = await http.get(Uri.parse(api));
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
       drinkResp = Drinks.fromJson(jsonDecode(response.body));
       print('dat si $drinkResp');
       setState(() {});
     } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
       print('dat si $drinkResp');
 
       throw Exception('Failed to load album');
