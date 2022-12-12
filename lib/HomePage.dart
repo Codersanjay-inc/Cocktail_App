@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   // var api = "www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail";
   var api = "https://thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail";
   Drinks? drinkResp;
+  var drinks;
 
   @override
   void initState() {
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 225, 54, 83),
+        backgroundColor: const Color.fromARGB(255, 225, 54, 83),
         title: const Text('Cocktail App'),
         centerTitle: true,
       ),
@@ -113,7 +114,8 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => DrinkDetail())),
+                              builder: ((context) =>
+                                  DrinkDetail(drinks: drinks))),
                         );
                       },
                     );

@@ -2,17 +2,21 @@ import 'package:cocktail_app/model/drinks_model.dart';
 import 'package:flutter/material.dart';
 
 class DrinkDetail extends StatelessWidget {
-  const DrinkDetail({super.key});
+  final drinks;
+  DrinkDetail({
+    key,
+    Drinks? drinkResp,
+    required this.drinks,
+  }) : super(key: key);
+  var index;
 
   @override
   Widget build(BuildContext context) {
-    var drinkResp;
-    var index;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         title: Text(
-          ' ${drinkResp?.drinks?[index].strDrink}',
+          ' ${drinks?.drinks?[index].strDrink}',
         ),
       ),
       body: Center(
@@ -24,7 +28,7 @@ class DrinkDetail extends StatelessWidget {
                 height: 40,
                 width: 40,
                 child: Image.network(
-                  '${drinkResp?.drinks?[index].strDrinkThumb}',
+                  '${drinks?.drinks?[index].strDrinkThumb}',
                   fit: BoxFit.cover,
                 ),
               ),
