@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // var api = "www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail";
+  // var api = "www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"; call krina
   var api = "https://thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail";
   Drinks? drinkResp;
   var drinks;
@@ -42,17 +42,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: const Icon(Icons.restaurant_menu_outlined),
+        leading: const Icon(
+          Icons.restaurant_menu_outlined,
+          color: Colors.black,
+        ),
         actions: const [
           Icon(
             Icons.qr_code_scanner_outlined,
+            color: Colors.black,
           )
         ],
         elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 225, 54, 83),
-        title: const Text('Cocktail App'),
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Cocktail App',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
       ),
       body: Center(
@@ -63,11 +70,11 @@ class _HomePageState extends State<HomePage> {
                         begin: Alignment.bottomLeft,
                         end: Alignment.topRight,
                         colors: [
-                      Color.fromARGB(255, 198, 131, 37),
-                      Color.fromARGB(255, 100, 92, 80),
+                      Color.fromARGB(255, 244, 235, 224),
+                      Color.fromARGB(255, 155, 154, 151),
                     ])),
                 child: ListView.builder(
-                  itemCount: 20,
+                  itemCount: 59,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Padding(
@@ -111,11 +118,16 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onTap: () {
+                        print(
+                            'the data is ${drinkResp?.drinks?[index].idDrink}');
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) =>
-                                  DrinkDetail(drinks: drinks))),
+                              builder: ((context) => DrinkDetail(
+                                    d: index,
+                                    myData: drinkResp?.drinks?[index],
+                                    allDrinks: drinkResp?.drinks,
+                                  ))),
                         );
                       },
                     );

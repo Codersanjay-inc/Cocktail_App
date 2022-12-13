@@ -2,22 +2,26 @@ import 'package:cocktail_app/model/drinks_model.dart';
 import 'package:flutter/material.dart';
 
 class DrinkDetail extends StatelessWidget {
-  final drinks;
-  DrinkDetail({
-    key,
-    Drinks? drinkResp,
-    required this.drinks,
-  }) : super(key: key);
+  // final Drinks drink;
+  final Drink? myData;
+  final List<Drink>? allDrinks;
+  final int d;
+  DrinkDetail({key, required this.d, this.myData, this.allDrinks})
+      : super(key: key);
   var index;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black54,
         elevation: 0,
         title: Text(
-          ' ${drinks?.drinks?[index].strDrink}',
+          ' ${allDrinks?[d].strDrink}',
+          style: const TextStyle(color: Colors.white),
+          // '${myData?.idDrink}'
         ),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
@@ -25,17 +29,33 @@ class DrinkDetail extends StatelessWidget {
           children: [
             ClipOval(
               child: SizedBox(
-                height: 40,
-                width: 40,
+                height: 200,
+                width: 200,
                 child: Image.network(
-                  '${drinks?.drinks?[index].strDrinkThumb}',
+                  '${allDrinks?[d].strDrinkThumb}',
+                  // '${myData?.strDrinkThumb}',
                   fit: BoxFit.cover,
                 ),
               ),
             ),
+            const SizedBox(
+              height: 8,
+            ),
+            Text('ID: ${allDrinks?[d].idDrink}',
+                style: const TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.w400)),
+            const SizedBox(
+              height: 8,
+            ),
+            Text(
+              ' ${allDrinks?[d].strDrink}',
+              style: const TextStyle(fontSize: 22),
+              // '${myData?.idDrink}'
+            ),
           ],
         ),
       ),
+      backgroundColor: Colors.blueGrey,
     );
   }
 }

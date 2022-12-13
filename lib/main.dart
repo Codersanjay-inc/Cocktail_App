@@ -1,4 +1,6 @@
 import 'package:cocktail_app/HomePage.dart';
+import 'package:cocktail_app/login.dart';
+import 'package:cocktail_app/register.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -10,9 +12,14 @@ class CockTail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginUi(),
+        'register': (context) => const SignUi(),
+        'HomePage': (context) => const HomePage(),
+      },
     );
   }
 }
