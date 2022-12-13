@@ -101,7 +101,12 @@ class _SignUiState extends State<SignUi> {
                               radius: 20,
                               backgroundColor: const Color(0xff4c505b),
                               child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    'HomePage',
+                                  );
+                                },
                                 icon: const Icon(Icons.arrow_forward),
                               ),
                             )
